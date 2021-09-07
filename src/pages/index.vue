@@ -1,11 +1,8 @@
 <template>
   <div>
     <nav>
-      <router-link to="/">
-        Home
-      </router-link>
       <router-link to="/components">
-        Components
+        {{ t('home.components') }}
       </router-link>
     </nav>
   </div>
@@ -17,4 +14,7 @@ meta:
 </route>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
