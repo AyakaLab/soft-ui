@@ -1,96 +1,38 @@
 body {
-  align-items: center;
-  cursor: none;
-  display: flex;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  height: 100vh;
-  justify-content: center;
-  overflow: hidden;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.centered-content {
-  text-align: center;
+.container {
+  width: 1200px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
-nav {
-  margin-bottom: 1em;
-}
-
-p {
-  line-height: 1.5em;
-  margin: 0.2em;
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-}
-
-a {
-  color: #007aff;
-  cursor: none;
-  display: inline-block;
-  padding: 0.6em 0.8em;
-  position: relative;
-  text-decoration: none;
+.ayaka-lift {
   transform: translate(var(--translateX), var(--translateY)) scale(var(--scale));
-  transition-duration: 0.1s;
-  transition-timing-function: ease-out;
-  transition-property: opacity;
-  z-index: 1;
   --scale: 1;
   --translateX: 0;
   --translateY: 0;
-}
-a:not(:hover) {
-  transition-property: transform, opacity;
-}
-a:active {
-  opacity: 0.5;
-  transform: translate(var(--translateX), var(--translateY)) scale(1);
+  transition: transform 0.1s ease;
 }
 
-.cursor {
-  height: var(--height);
-  left: var(--left);
-  pointer-events: none;
-  top: var(--top);
-  transform: translate(-50%, -50%) scale(var(--scale));
-  transition-property: width, height;
-  width: var(--width);
-  --top: 0em;
-  --left: 0em;
-  --width: 1em;
-  --height: 1em;
-  --scale: 1;
-  --translateX: 0;
-  --translateY: 0;
-}
-.cursor.is-locked {
-  transition-property: width, height, left, top;
-}
-.cursor.is-locked .cursor__content {
-  opacity: 0.06;
-}
-.cursor,
-.cursor__content {
-  position: absolute;
-  transition-duration: 0.1s;
-  transition-timing-function: ease-out;
-}
-.cursor__content {
-  background-color: #000;
-  border-radius: 0.6em;
-  bottom: 0;
-  left: 0;
-  opacity: 0.3;
-  right: 0;
-  top: 0;
-  transform: translate(var(--translateX), var(--translateY));
-  transition-property: "opacity";
+.block {
+  width: 200px;
+  height: 200px;
+  border-radius: 50px;
+  background: #ffffff;
+  box-shadow: 12px 12px 60px #d9d9d9, -20px -20px 60px #ffffff;
+  padding: 1.5rem 1.5rem;
+  color: #007aff;
+  box-sizing: border-box;
 }
