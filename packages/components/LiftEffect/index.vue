@@ -1,6 +1,8 @@
 <template>
   <div
     class="v-lift-effect"
+    :class="classes"
+    :style="styles"
     @mouseenter="handleMouseenter"
     @mousemove="handleMousemove"
     @mouseleave="handleMouseleave"
@@ -11,6 +13,7 @@
 
 <script lang="ts">
 export default defineComponent({
+  tag: 'v-lift-effect',
   name: 'LiftEffect',
   props: {
     tag: {
@@ -21,18 +24,47 @@ export default defineComponent({
       type: Number,
       default: 1.05,
     },
+    radius: {
+      type: [String, Number],
+      default: 0,
+    },
+    classname: {
+      type: String,
+      default: '',
+    },
+    enable: {
+      type: Boolean,
+      default: true,
+    },
   },
-  setup(props, { slots }) {
-    let rect: any = null
+  setup(props) {
+    const classNames = []
+    if (props.enable)
+      classNames.push('v-lift-effect--enable')
 
-    // 模拟 :hover 状态
+    let rect: any = null
+    const styles = {}
+    classNames.push((props.classname))
+
+    if (props.radius > 0)
+      (styles as any).borderRadius = `${String(props.radius)}px`
+
+    const classes = classNames.join(' ')
+
+    /**
+     * handleMouseenter 处理鼠标进入元素的事件
+     * 此处是为了模拟 :hover 状态
+     */
     function handleMouseenter(event: MouseEvent) {
       const target = (event.currentTarget as HTMLElement)
 
       rect = target.getBoundingClientRect()
       target.style.setProperty('--scale', String(props.scale))
     }
-    // 跟随鼠标移动
+    /**
+     * handleMousemove 处理鼠标移动元素的事件
+     * 实现跟随鼠标移动的效果
+     */
     function handleMousemove(event: MouseEvent) {
       const { currentTarget, clientX, clientY } = event
       const halfHeight = rect.height / 2
@@ -45,7 +77,10 @@ export default defineComponent({
       target.style.setProperty('--translateY', `${topOffset * 4}px`)
     }
 
-    // 模拟 :hover 状态（鼠标移出时恢复）
+    /**
+     * handleMouseleave 处理鼠标离开元素的事件
+     * 此处是为了模拟 :hover 状态被重设
+     */
     function handleMouseleave(event: MouseEvent) {
       const { currentTarget } = event
       const target = (currentTarget as HTMLElement)
@@ -59,6 +94,8 @@ export default defineComponent({
       handleMouseenter,
       handleMousemove,
       handleMouseleave,
+      classes,
+      styles,
     }
   },
 })
@@ -70,7 +107,15 @@ export default defineComponent({
     --scale: 1;
     --translateX: 0;
     --translateY: 0;
-    transition: transform 0.1s ease;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.v-lift-effect--enable {
+  box-shadow: 0px 6px 17px #dedede;
+}
+
+.v-lift-effect:hover {
+  box-shadow: 0px 12px 22px #dedede;
 }
 
 .v-lift-effect:active {

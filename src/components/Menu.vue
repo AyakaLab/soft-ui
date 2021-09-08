@@ -1,0 +1,10 @@
+<template>
+  <v-menu>
+    <v-menu-item>Item1</v-menu-item>
+    <v-menu-item>Item2</v-menu-item>
+    <v-menu-item>Item3</v-menu-item>
+    <v-menu-item>Item4</v-menu-item>
+    <v-menu-item>Item5</v-menu-item>
+    <v-menu-item>Item6</v-menu-item>
+  </v-menu>
+</template>
