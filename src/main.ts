@@ -2,10 +2,9 @@
 import { ViteSSG } from 'vite-ssg'
 import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:generated-layouts'
-import liftEffect from '../packages/helpers/liftEffect'
+import liftEffect from '../packages/components/LiftEffect'
 
 import App from './App.vue'
-import '~/index.css'
 
 // windicss layers
 import 'virtual:windi-base.css'
