@@ -1,7 +1,0 @@
-.ayaka-lift {
-  transform: translate(var(--translateX), var(--translateY)) scale(var(--scale));
-  --scale: 1;
-  --translateX: 0;
-  --translateY: 0;
-  transition: transform 0.1s ease;
-}
