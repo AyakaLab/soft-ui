@@ -8,11 +8,11 @@
       @mouseover="handleMouseOver"
       @mouseleave="handleMouseLeave"
     >
-      <div ref="root" class="v-menu-item p-3 rounded-xl flex flex-row items-center justify-start">
-        <div class="v-menu-item-internal-icon w-5 h-5 p-5 flex items-center justify-center align-middle leading-[0] rounded-md">
+      <div ref="root" class="v-menu-item rounded-xl flex flex-row items-center justify-start">
+        <div class="v-menu-item-internal-icon flex items-center justify-center align-middle leading-[0] rounded-md">
           <span><slot name="icon"></slot></span>
         </div>
-        <div class="ml-3">
+        <div class="v-menu-item-slot">
           <slot></slot>
         </div>
       </div>
@@ -83,6 +83,17 @@ export default defineComponent({
 </script>
 
 <style>
+.v-menu-item {
+  padding: 10px;
+}
+.v-menu-item-internal-icon {
+  padding: 20px;
+  width: 20px;
+  height: 20px;
+}
+.v-menu-item-slot {
+  margin-left: 10px;
+}
 .v-menu-item .v-menu-item-internal-icon {
   @apply shadow-md;
 }
