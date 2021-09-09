@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-5">
+  <div class="flex items-start justify-start flex-col flex-grow">
     <slot></slot>
   </div>
 </template>
@@ -8,7 +8,7 @@
 export default defineComponent({
   tag: 'v-menu',
   name: 'Menu',
-  setup(props, { slots }) {
+  setup() {
   },
 })
 </script>
