@@ -1,17 +1,17 @@
 <template>
   <s-lift-effect
-    class="s-menu-item-base"
+    class="s-button"
     :enable="liftEnabled"
     :baseshadow="baseShadow"
     :lifted="lifted"
     @mouseover="handleMouseOver"
     @mouseleave="handleMouseLeave"
   >
-    <div ref="root" class="s-menu-item rounded-xl flex flex-row items-center justify-start">
-      <div v-if="icon !== ''" class="s-menu-item-internal-icon flex items-center justify-center align-middle">
+    <div ref="root" class="s-button-inner rounded-xl flex flex-row items-center justify-start">
+      <div v-if="icon !== ''" class="s-button-inner-icon flex items-center justify-center align-middle">
         <span class="iconify" :data-icon="icon" data-inline="false" :style="style"></span>
       </div>
-      <div v-if="hasSlot" class="s-menu-item-slot">
+      <div v-if="hasSlot" :class="icon !== '' && hasSlot ? 's-button-slot' : ''">
         <slot></slot>
       </div>
     </div>
@@ -20,8 +20,8 @@
 
 <script lang="ts">
 export default defineComponent({
-  tag: 's-menu-item',
-  name: 'MenuItem',
+  tag: 's-button',
+  name: 'Button',
   props: {
     active: {
       type: Boolean,
@@ -68,16 +68,16 @@ export default defineComponent({
           baseShadow.value = true
           lifted.value = true
           // 加类名
-          root.value?.querySelectorAll('.s-menu-item-internal-icon').forEach((el) => {
+          root.value?.querySelectorAll('.s-button-inner-icon').forEach((el) => {
             const elem = el as HTMLElement
-            elem.classList.add('s-menu-item--active')
+            elem.classList.add('s-button-inner--active')
             elem.style.setProperty('--color', props.highlightColor)
             elem.style.setProperty('--iconcolor', props.highlightIconColor)
             currentIconColor.value = props.highlightIconColor
           })
         }
 
-        root.value?.querySelectorAll('.s-menu-item-internal-icon').forEach((el) => {
+        root.value?.querySelectorAll('.s-button-inner-icon').forEach((el) => {
           const elem = el as HTMLElement
           elem.style.setProperty('--color', props.color)
           elem.style.setProperty('--iconcolor', props.iconColor)
@@ -89,9 +89,9 @@ export default defineComponent({
     function handleMouseOver() {
       liftEnabled.value = true
       // 加类名
-      root.value?.querySelectorAll('.s-menu-item-internal-icon').forEach((el) => {
+      root.value?.querySelectorAll('.s-button-inner-icon').forEach((el) => {
         const elem = el as HTMLElement
-        elem.classList.add('s-menu-item--active')
+        elem.classList.add('s-button-inner--active')
         elem.style.setProperty('--color', props.highlightColor)
         elem.style.setProperty('--iconcolor', props.highlightIconColor)
         currentIconColor.value = props.highlightIconColor
@@ -104,9 +104,9 @@ export default defineComponent({
         return
       liftEnabled.value = false
       // 移除类名
-      root.value?.querySelectorAll('.s-menu-item-internal-icon').forEach((el) => {
+      root.value?.querySelectorAll('.s-button-inner-icon').forEach((el) => {
         const elem = el as HTMLElement
-        elem.classList.remove('s-menu-item--active')
+        elem.classList.remove('s-button-inner--active')
         elem.style.setProperty('--color', props.color)
         elem.style.setProperty('--iconcolor', props.iconColor)
         currentIconColor.value = props.iconColor
@@ -128,14 +128,15 @@ export default defineComponent({
 </script>
 
 <style>
-.s-menu-item-base {
+.s-button {
   width: 100%;
   border-radius: 8px;
+  background-color: var(--iconcolor);
 }
-.s-menu-item {
+.s-button-inner {
   padding: 10px;
 }
-.s-menu-item-internal-icon {
+.s-button-inner-icon {
   width: fit-content;
   height: fit-content;
   padding: 10px;
@@ -145,13 +146,13 @@ export default defineComponent({
   background-color: var(--iconcolor);
   border-radius: 8px;
 }
-.s-menu-item-slot {
+.s-button-slot {
   margin-left: 10px;
 }
-.s-menu-item .s-menu-item-internal-icon {
+.s-button-inner .s-button-inner-icon {
   @apply shadow-md;
 }
-.s-menu-item--active {
+.s-button-inner--active {
   @apply shadow-none font-semibold !important;
 }
 </style>

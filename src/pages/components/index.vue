@@ -6,14 +6,26 @@
     <div class="mt-10 text-black">
       <span class="text-lg">浮动效果</span>
     </div>
-    <div class="flex mt-10 mb-10 bg-transparent">
+    <div class="flex mt-10 mb-10">
       <LiftEffect />
     </div>
     <div class="mt-10 text-black">
       <span class="text-lg">菜单</span>
     </div>
-    <div class="flex mt-10 mb-10 bg-transparent">
+    <div class="flex mt-10 mb-10">
       <Menu />
+    </div>
+    <div class="mt-10 text-black">
+      <span class="text-lg">浮动卡片</span>
+    </div>
+    <div class="flex mt-10 mb-10">
+      <Blur />
+    </div>
+    <div class="mt-10 text-black">
+      <span class="text-lg">按钮</span>
+    </div>
+    <div class="flex mt-10 mb-10">
+      <Button />
     </div>
   </div>
 </template>

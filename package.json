@@ -14,6 +14,7 @@
     "preview-https": "serve dist"
   },
   "dependencies": {
+    "@iconify/iconify": "^2.0.4",
     "@vueuse/core": "^6.2.1",
     "@vueuse/head": "^0.6.0",
     "nprogress": "^0.2.0",
@@ -42,11 +43,11 @@
     "pnpm": "^6.14.6",
     "typescript": "^4.4.2",
     "unplugin-auto-import": "^0.4.1",
-    "unplugin-icons": "^0.7.6",
     "unplugin-vue-components": "^0.14.12",
     "vite": "^2.5.3",
     "vite-plugin-md": "^0.11.0",
     "vite-plugin-pages": "^0.18.0",
+    "vite-plugin-purge-icons": "^0.7.0",
     "vite-plugin-pwa": "^0.11.2",
     "vite-plugin-vue-layouts": "^0.4.1",
     "vite-plugin-windicss": "^1.4.1",

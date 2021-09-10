@@ -2,9 +2,14 @@
 import { ViteSSG } from 'vite-ssg'
 import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:generated-layouts'
-import liftEffect from '../packages/components/LiftEffect'
-import menu from '../packages/components/Menu'
 
+import '@iconify/iconify'
+import '@purge-icons/generated'
+
+import Blur from '../packages/components/Blur'
+import LiftEffect from '../packages/components/LiftEffect'
+import Menu from '../packages/components/Menu'
+import Button from '../packages/components/Button'
 import App from './App.vue'
 
 // windicss layers
@@ -24,8 +29,10 @@ export const createApp = ViteSSG(
   App,
   { routes },
   (ctx) => {
-    ctx.app.use(liftEffect)
-    ctx.app.use(menu)
+    ctx.app.use(LiftEffect)
+    ctx.app.use(Menu)
+    ctx.app.use(Blur)
+    ctx.app.use(Button)
 
     // install all modules under `modules/`
     Object.values(import.meta.globEager('./modules/*.ts')).map(i => i.install?.(ctx))

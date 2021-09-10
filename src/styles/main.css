@@ -41,3 +41,11 @@ html.dark {
     hover:opacity-100 hover:text-teal-600;
   font-size: 0.9em;
 }
+
+.s-default-text-color {
+  color: #007AFF;
+}
+
+.s-default-bg-color {
+  background-color: #F85D7F;
+}

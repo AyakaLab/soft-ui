@@ -1,7 +1,7 @@
 <template>
   <div
     ref="root"
-    class="v-lift-effect"
+    class="s-lift-effect"
     :style="styles"
     @mouseenter="handleMouseenter"
     @mousemove="handleMousemove"
@@ -15,7 +15,7 @@
 import { ref, onMounted } from 'vue'
 
 export default defineComponent({
-  tag: 'v-lift-effect',
+  tag: 's-lift-effect',
   name: 'LiftEffect',
   props: {
     tag: {
@@ -53,7 +53,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    let rect = reactive(new DOMRect())
+    let rect = reactive({}) as DOMRect
     const styles = reactive({})
     const root = ref(null)
 
@@ -61,13 +61,13 @@ export default defineComponent({
       const rootElement = ((root as any).value as HTMLElement)
       watchEffect(() => {
         if (props.baseshadow)
-          rootElement.classList.add('v-lift-effect--default-shadow')
+          rootElement.classList.add('s-lift-effect--default-shadow')
 
         if (props.radius > 0)
           (styles as any).borderRadius = `${String(props.radius)}px`
 
         if (props.lifted) {
-          rootElement.classList.add('v-lift-effect--active')
+          rootElement.classList.add('s-lift-effect--active')
           rootElement.style.setProperty('--scale', String(props.scale))
         }
       })
@@ -85,7 +85,7 @@ export default defineComponent({
 
       rect = target.getBoundingClientRect()
       target.style.setProperty('--scale', String(props.scale))
-      target.classList.add('v-lift-effect--active')
+      target.classList.add('s-lift-effect--active')
     }
     /**
      * handleMousemove 处理鼠标移动元素的事件
@@ -120,14 +120,14 @@ export default defineComponent({
         setTimeout(() => {
           target.style.setProperty('--translateX', '0')
           target.style.setProperty('--translateY', '0')
-        }, 2000)
+        }, 500)
         return
       }
 
       target.style.setProperty('--translateX', '0')
       target.style.setProperty('--translateY', '0')
       target.style.setProperty('--scale', '1')
-      target.classList.remove('v-lift-effect--active')
+      target.classList.remove('s-lift-effect--active')
     }
 
     return {
@@ -142,7 +142,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="css">
-.v-lift-effect {
+.s-lift-effect {
     transform: translate(var(--translateX), var(--translateY)) scale(var(--scale));
     --scale: 1;
     --translateX: 0;
@@ -150,15 +150,15 @@ export default defineComponent({
     transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
-.v-lift-effect--active {
+.s-lift-effect--active {
   box-shadow: 0px 12px 22px #dedede !important;
 }
 
-.v-lift-effect--default-shadow {
+.s-lift-effect--default-shadow {
   box-shadow: 0px 6px 17px #dedede;
 }
 
-.v-lift-effect:active {
+.s-lift-effect:active {
   transform: translate(var(--translateX), var(--translateY)) scale(1);
 }
 </style>

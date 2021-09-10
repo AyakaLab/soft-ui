@@ -1,7 +1,15 @@
 <template>
-  <v-lift-effect class="rounded-xl">
-    <div class="h-[100px] w-[100px] p-[10px] box-border select-none rounded-xl flex items-center justify-center text-[#007aff]">
+  <s-lift-effect class="rounded-xl">
+    <div class="block box-border select-none rounded-xl flex items-center justify-center">
       <span>Block</span>
     </div>
-  </v-lift-effect>
+  </s-lift-effect>
 </template>
+
+<style scoped>
+.block {
+  height: 100px;
+  width: 100px;
+  padding: 10px;
+}
+</style>
