@@ -130,7 +130,7 @@ export default defineComponent({
 <style>
 .s-menu-item-base {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 .s-menu-item {
   padding: 10px;
@@ -143,7 +143,7 @@ export default defineComponent({
   font-size: 16px;
   color: var(--color);
   background-color: var(--iconcolor);
-  border-radius: 8px;
+  border-radius: 12px;
 }
 .s-menu-item-slot {
   margin-left: 10px;

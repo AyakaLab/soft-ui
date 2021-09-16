@@ -151,11 +151,11 @@ export default defineComponent({
 }
 
 .s-lift-effect--active {
-  box-shadow: 0px 12px 22px #dedede !important;
+  box-shadow: 0px 12px 22px #e4e4e4 !important;
 }
 
 .s-lift-effect--default-shadow {
-  box-shadow: 0px 6px 17px #dedede;
+  box-shadow: 0px 6px 17px #e4e4e4;
 }
 
 .s-lift-effect:active {

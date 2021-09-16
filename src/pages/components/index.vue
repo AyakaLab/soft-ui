@@ -4,6 +4,12 @@
       <span class="text-3xl">组件</span>
     </div>
     <div class="mt-10 text-black">
+      <span class="text-lg">卡片</span>
+    </div>
+    <div class="flex mt-10 mb-10">
+      <Card />
+    </div>
+    <div class="mt-10 text-black">
       <span class="text-lg">浮动效果</span>
     </div>
     <div class="flex mt-10 mb-10">
@@ -24,7 +30,7 @@
     <div class="mt-10 text-black">
       <span class="text-lg">按钮</span>
     </div>
-    <div class="flex mt-10 mb-10">
+    <div class="flex mt-10 mb-10 w-full">
       <Button />
     </div>
   </div>

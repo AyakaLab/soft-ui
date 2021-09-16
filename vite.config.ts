@@ -67,6 +67,10 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-windicss
     WindiCSS({
       safelist: markdownWrapperClasses,
+      scan: {
+        dirs: ['src', 'packages'],
+        fileExtensions: ['vue', 'js', 'ts'],
+      },
     }),
 
     // https://github.com/antfu/vite-plugin-md

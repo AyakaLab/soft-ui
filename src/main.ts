@@ -6,10 +6,11 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import '@iconify/iconify'
 import '@purge-icons/generated'
 
-import Blur from '../packages/components/Blur'
-import LiftEffect from '../packages/components/LiftEffect'
 import Menu from '../packages/components/Menu'
 import Button from '../packages/components/Button'
+import Card from '../packages/components/Card'
+import LiftEffect from '../packages/components/LiftEffect'
+import Blur from '../packages/components/Blur'
 import App from './App.vue'
 
 // windicss layers
@@ -33,6 +34,7 @@ export const createApp = ViteSSG(
     ctx.app.use(Menu)
     ctx.app.use(Blur)
     ctx.app.use(Button)
+    ctx.app.use(Card)
 
     // install all modules under `modules/`
     Object.values(import.meta.globEager('./modules/*.ts')).map(i => i.install?.(ctx))

@@ -11,6 +11,9 @@ export default defineConfig({
     typography(),
   ],
   theme: {
+    boxShadow: {
+      md: '0px 10px 20px 0px #2b2b2b20',
+    },
     extend: {
       typography: {
         DEFAULT: {

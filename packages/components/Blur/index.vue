@@ -1,5 +1,5 @@
 <template>
-  <div class="s-blur">
+  <div class="s-blur shadow-md box-content">
     <slot></slot>
   </div>
 </template>
@@ -14,6 +14,5 @@ export default defineComponent({
 <style lang="css" scoped>
 .s-blur {
   backdrop-filter: blur(4px);
-  @apply shadow-md box-content;
 }
 </style>

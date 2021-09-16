@@ -5,6 +5,25 @@
   </s-blur>
 </template>
 
+<script lang="ts">
+export interface HeaderTitles {
+  title: string
+  path: string
+}
+
+export default defineComponent({
+  name: 'Header',
+  props: {
+    titles: {
+      type: Array,
+      required: true,
+    },
+  },
+  setup() {
+  },
+})
+</script>
+
 <style lang="css" scoped>
 .header {
   top: 0;
@@ -16,7 +35,7 @@
   width: 100%;
   max-width: 1280px;
   background-color: #FFFFFF63;
-  border-radius: 8px;
+  border-radius: 12px;
   z-index: 999;
 }
 

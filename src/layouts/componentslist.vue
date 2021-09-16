@@ -1,7 +1,7 @@
 <template>
   <main class="main text-gray-700 dark:text-gray-200">
-    <Header />
-    <div class="section">
+    <Header :titles="[]" />
+    <div class="section p-5">
       <router-view />
     </div>
     <Footer />
