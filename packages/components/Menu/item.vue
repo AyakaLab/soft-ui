@@ -11,7 +11,7 @@
       <div v-if="icon !== ''" class="s-menu-item-internal-icon flex items-center justify-center align-middle">
         <span class="iconify" :data-icon="icon" data-inline="false" :style="style"></span>
       </div>
-      <div v-if="hasSlot" class="s-menu-item-slot">
+      <div v-if="hasSlot" class="s-menu-item-slot select-none">
         <slot></slot>
       </div>
     </div>

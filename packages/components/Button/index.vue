@@ -13,13 +13,15 @@
         <span class="iconify" :data-icon="icon" data-inline="false" :style="style"></span>
       </div>
       <div v-if="hasSlot" :class="innerSlotClass">
-        <span><slot></slot></span>
+        <span class="select-none"><slot></slot></span>
       </div>
     </div>
   </s-lift-effect>
 </template>
 
 <script lang="ts">
+import { defaultColors } from './constants'
+
 export default defineComponent({
   tag: 's-button',
   name: 'Button',
@@ -52,10 +54,14 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    size: {
+      type: String,
+      default: 'md',
+    },
   },
   setup(props, { slots }) {
     const root = ref<HTMLElement>()
-    const baseShadow = ref(true)
+    const baseShadow = ref(false)
     const liftEnabled = ref(false)
     const lifted = ref(false)
     const currentIconColor = ref('')
@@ -76,7 +82,7 @@ export default defineComponent({
       return 'p-2 s-button-inner-icon'
     })
     const innerSlotClass = computed(() => {
-      return (props.icon !== '' && hasSlot.value) ? 's-button-slot s-button-slot-all' : 's-button-slot s-button-slot-textonly'
+      return (props.icon !== '' && hasSlot.value) ? 's-button-slot s-button-slot-all' : 's-button-slot s-button-slot-text'
     })
 
     const iconColor = ref('')
@@ -84,6 +90,61 @@ export default defineComponent({
     const color = ref('')
     const highlightColor = ref('')
     const buttonType = ref('')
+    const buttonSize = ref('')
+
+    const isTextOnlyButton = computed(() => {
+      return hasSlot.value && props.icon === ''
+    })
+    const isIconOnlyButton = computed(() => {
+      return !hasSlot.value && props.icon !== ''
+    })
+    const isCombinedButton = computed(() => {
+      return hasSlot.value && props.icon !== ''
+    })
+
+    function setTextOnlyDefaultColor() {
+      if (buttonType.value === '')
+        return
+      if (!isTextOnlyButton.value)
+        return
+
+      const btnStyle: any = buttonStyle
+      const selectedColor = (defaultColors as any)[buttonType.value]
+
+      iconColor.value = selectedColor
+      highlightIconColor.value = selectedColor
+      color.value = '#FFFFFF'
+      highlightColor.value = '#FFFFFF'
+      btnStyle.backgroundColor = selectedColor
+    }
+
+    function setIconOnlyDefaultColor() {
+      if (buttonType.value === '')
+        return
+      if (!isIconOnlyButton.value)
+        return
+
+      const selectedColor = (defaultColors as any)[buttonType.value]
+
+      iconColor.value = selectedColor
+      highlightIconColor.value = '#FFFFFF'
+      color.value = '#FFFFFF'
+      highlightColor.value = selectedColor
+    }
+
+    function setCombinedDefaultColor() {
+      if (buttonType.value === '')
+        return
+      if (!isCombinedButton.value)
+        return
+
+      const selectedColor = (defaultColors as any)[buttonType.value]
+
+      iconColor.value = '#FFFFFF'
+      highlightIconColor.value = selectedColor
+      color.value = selectedColor
+      highlightColor.value = '#FFFFFF'
+    }
 
     watchEffect(() => {
       buttonType.value = props.type
@@ -92,14 +153,20 @@ export default defineComponent({
       color.value = props.color
       highlightColor.value = props.highlightColor
 
-      setDefaultColor()
+      buttonSize.value = props.size
+      setTextOnlyDefaultColor()
+      setIconOnlyDefaultColor()
+      setCombinedDefaultColor()
+      setDefaultSize()
     })
 
     onMounted(() => {
       watchEffect(() => {
+        if (isTextOnlyButton.value)
+          baseShadow.value = true
         if (props.active) {
           liftEnabled.value = true
-          baseShadow.value = false
+          baseShadow.value = true
           lifted.value = true
           // 加类名
           root.value?.querySelectorAll('.s-button-inner-icon').forEach((el) => {
@@ -124,41 +191,17 @@ export default defineComponent({
       })
     })
 
-    function setDefaultColor() {
-      if (buttonType.value === '')
+    function setDefaultSize() {
+      if (!hasSlot.value)
         return
 
-      const btnStyle: any = buttonStyle
-      switch (buttonType.value) {
-        case 'primary':
-          iconColor.value = '#007AFF'
-          highlightIconColor.value = '#007AFF'
-          color.value = '#FFFFFF'
-          highlightColor.value = '#FFFFFF'
-          btnStyle.backgroundColor = '#007AFF'
-          break
-        case 'danger':
-          iconColor.value = '#f1412e'
-          highlightIconColor.value = '#f1412e'
-          color.value = '#FFFFFF'
-          highlightColor.value = '#FFFFFF'
-          btnStyle.backgroundColor = '#f1412e'
-          break
-        case 'warning':
-          iconColor.value = '#fcca03'
-          highlightIconColor.value = '#fcca03'
-          color.value = '#FFFFFF'
-          highlightColor.value = '#FFFFFF'
-          btnStyle.backgroundColor = '#fcca03'
-          break
-        case 'success':
-          iconColor.value = '#00bd3c'
-          highlightIconColor.value = '#00bd3c'
-          color.value = '#FFFFFF'
-          highlightColor.value = '#FFFFFF'
-          btnStyle.backgroundColor = '#00bd3c'
-          break
-      }
+      const allAvailableSizes = ['xs', 'sm', 'md', 'lg', 'xl']
+      root.value?.querySelectorAll('.s-button-slot').forEach((el) => {
+        const elem = el as HTMLElement
+        const pendingRemoval = allAvailableSizes.filter(item => item !== buttonSize.value)
+        pendingRemoval.forEach(item => elem.classList.remove(item))
+        elem.classList.add(`text-${buttonSize.value}`)
+      })
     }
 
     // 鼠标进入的时候
@@ -218,8 +261,8 @@ export default defineComponent({
 
 <style>
 .s-button {
-  width: 100%;
-  border-radius: 12px;
+  @apply w-full rounded-xl;
+  height: fit-content;
   background-color: var(--iconcolor);
 }
 .s-button-inner {
@@ -237,11 +280,11 @@ export default defineComponent({
 }
 .s-button-slot-all {
   margin-left: 10px;
+  @apply overflow-hidden whitespace-nowrap;
+  color: var(--color);
 }
-.s-button-slot-textonly {
-  overflow: hidden;
-  word-wrap: break-word;
-  white-space: nowrap;
+.s-button-slot-text {
+  @apply overflow-hidden whitespace-nowrap;
   color: var(--color);
 }
 .s-button-inner .s-button-inner-icon {

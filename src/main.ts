@@ -6,6 +6,7 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import '@iconify/iconify'
 import '@purge-icons/generated'
 
+import Input from '../packages/components/Input'
 import Menu from '../packages/components/Menu'
 import Button from '../packages/components/Button'
 import Card from '../packages/components/Card'
@@ -35,6 +36,7 @@ export const createApp = ViteSSG(
     ctx.app.use(Blur)
     ctx.app.use(Button)
     ctx.app.use(Card)
+    ctx.app.use(Input)
 
     // install all modules under `modules/`
     Object.values(import.meta.globEager('./modules/*.ts')).map(i => i.install?.(ctx))
