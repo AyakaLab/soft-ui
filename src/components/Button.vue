@@ -1,6 +1,6 @@
 <template>
-  <div class="button flex items-center justify-center space-y-5 flex-col">
-    <div class="flex items-center justify-center flex-col  w-full">
+  <div class="button flex items-center justify-center space-y-5 flex-row flex-wrap">
+    <div class="flex items-center justify-center flex-col w-full">
       <s-card class="w-full h-full">
         <div class="mb-5">
           <h1 class="text-xl">

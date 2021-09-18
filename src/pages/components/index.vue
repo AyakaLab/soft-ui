@@ -33,6 +33,12 @@
     <div class="flex mt-10 mb-10 w-full">
       <Button />
     </div>
+    <div class="mt-10 text-black">
+      <span class="text-lg">输入框</span>
+    </div>
+    <div class="flex mt-10 mb-10 w-full">
+      <Input />
+    </div>
   </div>
 </template>
 

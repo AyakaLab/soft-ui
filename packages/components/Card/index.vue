@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full">
+  <div class="w-full">
     <div class="shadow-md p-5 rounded-xl">
       <slot></slot>
     </div>
