@@ -9,6 +9,7 @@
     @mouseleave="handleMouseLeave"
   >
     <div ref="root" :class="innerClass">
+      <div v-if="loading" class="s-button-loading"></div>
       <div v-if="icon !== ''" :class="innerIconClass">
         <span class="iconify" :data-icon="icon" data-inline="false" :style="style"></span>
       </div>
@@ -57,6 +58,10 @@ export default defineComponent({
     size: {
       type: String,
       default: 'md',
+    },
+    loading: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props, { slots }) {
@@ -293,5 +298,37 @@ export default defineComponent({
 .s-button-inner--active {
   box-shadow: none !important;
   @apply font-semibold !important;
+}
+
+:root {
+  --width: 2px;
+  --freq: 2px;
+}
+
+.s-button-loading {
+  margin: calc(var(--freq) * 2 + var(--width) * 2);
+  width: 5px;
+  height: 5px;
+  background: #fffb;
+  box-shadow:
+    0 0 0 0 transparent,
+    0 0 0 0 rgba(255, 255, 255, .5),
+    0 0 0 calc(var(--freq) + var(--width)) transparent,
+    0 0 0 calc(var(--freq) + var(--width) * 2) rgba(255, 255, 255, .5),
+    0 0 0 calc(var(--freq) * 2 + var(--width) * 2) transparent;
+  border-radius: 50%;
+  animation: ripple 1s infinite linear;
+}
+
+@keyframes ripple {
+  to {
+    background: #fff8;
+    box-shadow:
+      0 0 0 calc(var(--freq) + var(--width)) transparent,
+      0 0 0 calc(var(--freq) + var(--width) * 2) rgba(255, 255, 255, .5),
+      0 0 0 calc(var(--freq) * 2 + var(--width) * 2) transparent,
+      0 0 0 calc(var(--freq) * 2 + var(--width) * 2) rgba(255, 255, 255, 0),
+      0 0 0 calc(var(--freq) * 2 + var(--width) * 2) transparent;
+  }
 }
 </style>

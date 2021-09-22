@@ -118,6 +118,24 @@
         </div>
       </s-card>
     </div>
+    <div class="flex items-center justify-center flex-col w-full">
+      <s-card class="w-full h-full">
+        <div class="mb-5">
+          <h1 class="text-xl">
+            按钮加载
+          </h1>
+        </div>
+        <div class="width-fit-content flex space-x-2">
+          <s-button
+            :type="'primary'"
+            :loading="true"
+            :size="'sm'"
+          >
+            警告按钮
+          </s-button>
+        </div>
+      </s-card>
+    </div>
   </div>
 </template>
 

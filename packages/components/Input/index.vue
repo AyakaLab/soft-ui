@@ -66,9 +66,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.s-input {
-}
-
 .s-input--inner {
   box-shadow: inset 0px 10px 6px 3px #f1f1f1,
             inset -0px -10px 6px 3px #ffffff;

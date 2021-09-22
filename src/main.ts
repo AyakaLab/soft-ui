@@ -6,12 +6,7 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import '@iconify/iconify'
 import '@purge-icons/generated'
 
-import Input from '../packages/components/Input'
-import Menu from '../packages/components/Menu'
-import Button from '../packages/components/Button'
-import Card from '../packages/components/Card'
-import LiftEffect from '../packages/components/LiftEffect'
-import Blur from '../packages/components/Blur'
+import AyakaUI from '../packages/ayaka-ui/index'
 import App from './App.vue'
 
 // windicss layers
@@ -31,12 +26,7 @@ export const createApp = ViteSSG(
   App,
   { routes },
   (ctx) => {
-    ctx.app.use(LiftEffect)
-    ctx.app.use(Menu)
-    ctx.app.use(Blur)
-    ctx.app.use(Button)
-    ctx.app.use(Card)
-    ctx.app.use(Input)
+    ctx.app.use(AyakaUI.install)
 
     // install all modules under `modules/`
     Object.values(import.meta.globEager('./modules/*.ts')).map(i => i.install?.(ctx))
