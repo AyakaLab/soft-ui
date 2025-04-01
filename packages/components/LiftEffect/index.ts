@@ -1,8 +1,1 @@
-import type { App } from 'vue'
-import LiftEffect from './index.vue'
-
-export default {
-  install: (app: App) => {
-    app.component(LiftEffect.tag, LiftEffect)
-  },
-}
+export { default as LiftEffect } from './index.vue'

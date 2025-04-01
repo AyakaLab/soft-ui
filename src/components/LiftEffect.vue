@@ -1,7 +1,11 @@
+<script setup lang="ts">
+import { LiftEffect } from '../../packages/components/LiftEffect'
+</script>
+
 <template>
-  <v-lift-effect class="rounded-xl">
-    <div class="h-[100px] w-[100px] p-[10px] box-border select-none rounded-xl flex items-center justify-center text-[#007aff]">
+  <LiftEffect class="rounded-xl">
+    <div class="box-border h-[100px] w-[100px] flex select-none items-center justify-center rounded-xl p-[10px] text-[#007aff]">
       <span>Block</span>
     </div>
-  </v-lift-effect>
+  </LiftEffect>
 </template>

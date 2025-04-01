@@ -1,22 +1,27 @@
+<script setup lang="ts">
+import Menu from '../../packages/components/Menu/index.vue'
+import MenuItem from '../../packages/components/Menu/item.vue'
+</script>
+
 <template>
-  <v-menu>
-    <v-menu-item>
+  <Menu>
+    <MenuItem>
       <template #icon>
-        <carbon-accessibility-color />
+        <div i-carbon-accessibility-color />
       </template>
       仪表盘
-    </v-menu-item>
-    <v-menu-item>
+    </MenuItem>
+    <MenuItem>
       <template #icon>
-        <carbon-aperture />
+        <div i-carbon-aperture />
       </template>
       数据流
-    </v-menu-item>
-    <v-menu-item>
+    </MenuItem>
+    <MenuItem>
       <template #icon>
-        <carbon-analytics />
+        <div i-carbon-analytics />
       </template>
       统计图表
-    </v-menu-item>
-  </v-menu>
+    </MenuItem>
+  </Menu>
 </template>

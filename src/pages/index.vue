@@ -1,20 +1,29 @@
+<script setup lang="ts">
+import LiftEffect from '../components/LiftEffect.vue'
+import Menu from '../components/Menu.vue'
+</script>
+
 <template>
-  <div>
-    <nav>
-      <router-link to="/components">
-        {{ t('home.components') }}
-      </router-link>
-    </nav>
+  <div class="flex flex-col items-start gap-4 p-4">
+    <div class="text-black">
+      <span class="text-3xl">组件</span>
+    </div>
+    <div class="text-black">
+      <span class="text-lg">浮动效果</span>
+    </div>
+    <div class="flex bg-transparent">
+      <LiftEffect />
+    </div>
+    <div class="text-black">
+      <span class="text-lg">菜单</span>
+    </div>
+    <div class="flex bg-transparent">
+      <Menu />
+    </div>
   </div>
 </template>
 
 <route lang="yaml">
 meta:
-  layout: home
+  layout: componentslist
 </route>
-
-<script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
-</script>

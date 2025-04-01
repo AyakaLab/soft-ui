@@ -1,14 +1,8 @@
+<script setup lang="ts">
+</script>
+
 <template>
-  <div class="flex items-start justify-start flex-col flex-grow">
-    <slot></slot>
+  <div class="flex flex-grow flex-col items-start justify-start">
+    <slot />
   </div>
 </template>
-
-<script lang="ts">
-export default defineComponent({
-  tag: 'v-menu',
-  name: 'Menu',
-  setup() {
-  },
-})
-</script>
