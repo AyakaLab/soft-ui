@@ -1,18 +1,13 @@
 [build]
+base = "/"
+command = "pnpm run build"
 publish = "dist"
-command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build"
 
 [build.environment]
-NPM_FLAGS = "--prefix=/dev/null"
-NODE_VERSION = "14"
+NODE_VERSION = "23"
 
 [[redirects]]
 from = "/*"
 to = "/index.html"
 status = 200
-
-[[headers]]
-for = "/manifest.webmanifest"
-
-[headers.values]
-Content-Type = "application/manifest+json"
+force = false
